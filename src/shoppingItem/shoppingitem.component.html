@@ -1,0 +1,12 @@
+
+    <mat-card *ngIf="item" class="shopping__list-card">
+        <mat-card-header>
+            <mat-card-title>{{item.name}}</mat-card-title>
+            <mat-card-subtitle *ngIf="showNotes">{{item.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="shopping__list-image" mat-card-image [src]=getAssetPath(item.imageURL) alt="Photo of a shopping item">
+        <mat-card-actions>
+            <button *ngIf="isActionEnabled(ACTIONS.ADDTOCART)" mat-stroked-button color="accent" class="pull-right" mat-button (click)="addToCart(item)">Add to cart</button>
+            <button *ngIf="isActionEnabled(ACTIONS.DELETE)" mat-stroked-button color="accent" class="pull-right" mat-button (click)="removeFromCart(item)">Remove</button>
+        </mat-card-actions>
+    </mat-card>

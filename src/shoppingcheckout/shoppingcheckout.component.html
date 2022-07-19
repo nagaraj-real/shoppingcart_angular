@@ -1,0 +1,10 @@
+<section class="shopping__list-container">
+    <ng-container *ngIf="($shoppingItems|async)?.length; else noitem">
+        <div *ngFor="let item of $shoppingItems|async" class="shopping__list-item">
+        <shoppingitem [item]="item" [showNotes]="true" [actions]="actions"></shoppingitem>
+    </div>
+</ng-container>
+<ng-template #noitem>
+    <h4>No Items added yet</h4>
+</ng-template>
+</section>

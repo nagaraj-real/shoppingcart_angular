@@ -1,0 +1,9 @@
+  <nav class="shopping__nav">
+    <mat-toolbar color="primary">
+      <span style="cursor:pointer" (click)="navigateToHome()">Shopping Mart</span>
+      <span class="shop-spacer"></span>
+      <button mat-icon-button class="shop-icon shopping-cart-icon" (click)="navigateToCheckout()" aria-label="icon-button with shopping icon">
+        <mat-icon>add_shopping_cart</mat-icon> <span *ngIf="($cartItems|async)?.length">{{($cartItems|async)?.length}}</span>
+      </button>
+    </mat-toolbar>
+  </nav>
