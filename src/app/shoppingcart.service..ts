@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, of, Subject } from "rxjs";
 import { shoppingItem } from "src/models";
 
 @Injectable({
@@ -9,12 +9,14 @@ import { shoppingItem } from "src/models";
 export class ShoppingCartService {
 
     public cartItemsSub = new BehaviorSubject<shoppingItem[]>([]);
-    private static readonly url ="http://localhost:8080/api/items"
+    //private static readonly url ="http://localhost:8080/api/items"
     constructor(private $http: HttpClient){
     }
 
     public fetchShoppingCartItems():Observable<shoppingItem[]>{
-        return this.$http.get<shoppingItem[]>(ShoppingCartService.url);
+        return of([{"id":1,"name":"Chair","description":"Notes about brown Chair","imageURL":"chair.jpg"},
+        {"id":2,"name":"Dining Table","description":"Notes about large dining table","imageURL":"dining.jpg"},
+        {"id":3,"name":"Sofa","description":"Notes about brown Sofa","imageURL":"sofa.jpg"}])
     }
 
     public fetchCartItems():Observable<shoppingItem[]>{
